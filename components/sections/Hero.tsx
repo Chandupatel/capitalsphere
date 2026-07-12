@@ -20,7 +20,7 @@ export function Hero() {
       <Container className="relative grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.05fr_1fr]">
         <div className="animate-fade-up">
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-gold-400/60 bg-gold-100/60 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-gold-600">
-            Trusted by 10,000+ businesses across India
+            Trusted by 500+ businesses across India
           </div>
           <h1 className="text-balance font-display text-4xl font-bold leading-[1.12] tracking-tight text-navy-950 sm:text-5xl lg:text-[3.4rem]">
             Empowering Businesses with Smart{" "}
@@ -40,53 +40,44 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto flex aspect-square w-full max-w-md items-center justify-center lg:max-w-none">
+        <div className="relative mx-auto flex w-full max-w-md items-center justify-center py-6 lg:max-w-none">
           {/* radial glow */}
           <div
             className="absolute inset-0 rounded-full"
             style={{
               background:
-                "radial-gradient(circle at 50% 45%, rgba(198,167,106,0.16), transparent 62%)",
+                "radial-gradient(circle at 50% 42%, rgba(198,167,106,0.18), transparent 62%)",
             }}
             aria-hidden
           />
-          {/* podium ellipse */}
-          <div className="absolute bottom-[14%] h-10 w-[70%] rounded-full bg-navy-900/90 shadow-[0_25px_45px_-10px_rgba(5,15,34,0.45)]" />
-          <div className="absolute bottom-[19%] h-3 w-[62%] rounded-full bg-gold-500" />
 
-          {/* ascending bars */}
-          <div className="absolute bottom-[24%] left-[8%] flex items-end gap-2.5 sm:left-[4%]">
-            {[34, 52, 70, 92].map((h, i) => (
-              <span
-                key={i}
-                className="w-4 rounded-t-sm bg-gradient-to-t from-navy-800 to-navy-600 sm:w-5"
-                style={{ height: `${h}px` }}
-              />
-            ))}
-          </div>
+          {/* podium base beneath the wordmark */}
+          <div className="absolute bottom-[6%] h-8 w-[58%] rounded-full bg-navy-900/90 blur-[1px]" />
+          <div className="absolute bottom-[11%] h-2.5 w-[48%] rounded-full bg-gold-500" />
+
           <TrendingUp
-            className="absolute bottom-[40%] right-[6%] size-10 text-gold-500 drop-shadow-sm sm:size-14"
+            className="absolute right-[6%] top-[4%] size-10 text-gold-500 drop-shadow-sm sm:size-12"
             strokeWidth={1.75}
             aria-hidden
           />
 
-          {/* logo mark */}
-          <div className="relative z-10 -translate-y-6">
+          {/* full logo — icon + wordmark, always shown in full, never cropped */}
+          <div className="relative z-10 w-[82%] sm:w-[70%] lg:w-[78%]">
             <Image
-              src="/images/logo-mark.png"
-              alt="CapitalSphere emblem"
-              width={220}
-              height={196}
-              className="h-40 w-auto drop-shadow-[0_18px_30px_rgba(11,42,74,0.35)] sm:h-52"
+              src="/images/logo-full.png"
+              alt="CapitalSphere — Funding Today, Building Tomorrow"
+              width={1059}
+              height={760}
+              className="h-auto w-full object-contain drop-shadow-[0_18px_30px_rgba(11,42,74,0.28)]"
               priority
             />
           </div>
 
           {/* floating stat chip */}
-          <div className="absolute left-0 top-6 flex items-center gap-2 rounded-2xl border border-border bg-white px-4 py-3 shadow-[var(--shadow-card)] sm:left-2">
+          <div className="absolute left-0 top-2 flex items-center gap-2 rounded-2xl border border-border bg-white px-4 py-3 shadow-[var(--shadow-card)] sm:left-2">
             <ArrowUpRight className="size-4 text-gold-600" />
             <div className="leading-tight">
-              <p className="text-sm font-bold text-navy-950">₹500+ Cr</p>
+              <p className="text-sm font-bold text-navy-950">₹50+ Cr</p>
               <p className="text-[11px] text-slate-500">Funding Assisted</p>
             </div>
           </div>

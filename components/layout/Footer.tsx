@@ -3,6 +3,7 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { NewsletterForm } from "@/components/layout/NewsletterForm";
 import { FOOTER_LINKS } from "@/constants/data";
+import { ADMIN_EMAIL_DISPLAY, PHONE_DISPLAY, PHONE_TEL } from "@/constants/contact";
 
 const SOCIALS = [
   { initials: "f", label: "Facebook" },
@@ -69,11 +70,15 @@ export function Footer() {
           <ul className="flex flex-col gap-3 text-sm text-navy-100/70">
             <li className="flex items-start gap-2.5">
               <Phone className="mt-0.5 size-4 shrink-0 text-gold-500" />
-              +91 98765 43210
+              <a href={PHONE_TEL} className="transition-colors hover:text-gold-500">
+                {PHONE_DISPLAY}
+              </a>
             </li>
             <li className="flex items-start gap-2.5">
               <Mail className="mt-0.5 size-4 shrink-0 text-gold-500" />
-              info@capitalsphere.in
+              <a href={`mailto:${ADMIN_EMAIL_DISPLAY}`} className="transition-colors hover:text-gold-500">
+                {ADMIN_EMAIL_DISPLAY}
+              </a>
             </li>
             <li className="flex items-start gap-2.5">
               <MapPin className="mt-0.5 size-4 shrink-0 text-gold-500" />

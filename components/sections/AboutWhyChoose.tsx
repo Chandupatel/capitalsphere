@@ -31,17 +31,21 @@ export function AboutWhyChoose() {
               }}
               aria-hidden
             />
-            <div className="relative flex items-center gap-5 px-7 py-9 sm:px-10">
-              <Image
-                src="/images/logo-mark.png"
-                alt="CapitalSphere office emblem"
-                width={96}
-                height={86}
-                className="h-16 w-auto shrink-0 drop-shadow-lg sm:h-20"
-              />
+            <div className="relative flex items-center gap-6 px-7 py-8 sm:px-10 sm:py-10">
+              <span className="flex size-20 shrink-0 items-center justify-center rounded-2xl bg-white/5 p-3 ring-1 ring-white/10 sm:size-24">
+                <Image
+                  src="/images/logo-mark.png"
+                  alt="CapitalSphere emblem"
+                  width={96}
+                  height={86}
+                  className="h-full w-full object-contain drop-shadow-lg"
+                />
+              </span>
               <div>
-                <p className="font-display text-lg font-semibold text-white">CapitalSphere HQ</p>
-                <p className="mt-1 text-sm text-navy-100/65">Jaipur, Rajasthan &mdash; PAN India Service</p>
+                <p className="font-display text-lg font-semibold leading-snug text-white sm:text-xl">
+                  Capital Sphere Business Solution
+                </p>
+                <p className="mt-1.5 text-sm text-navy-100/65">Jaipur, Rajasthan &mdash; PAN India Service</p>
               </div>
             </div>
           </div>

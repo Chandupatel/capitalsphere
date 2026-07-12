@@ -1,6 +1,6 @@
 import { Handshake, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
-import { Button } from "@/components/ui/Button";
+import { ConsultationButton } from "@/components/consultation/ConsultationButton";
 
 export function CtaBanner() {
   return (
@@ -29,13 +29,13 @@ export function CtaBanner() {
             </div>
           </div>
           <div className="flex flex-col items-center gap-3.5 sm:flex-row">
-            <Button href="#contact" variant="secondary" withArrow>
+            <ConsultationButton variant="secondary" withArrow>
               Book Free Consultation
-            </Button>
+            </ConsultationButton>
             <span className="text-xs font-semibold uppercase tracking-wide text-navy-100/50">Or</span>
-            <Button href="tel:+919876543210" variant="ghost">
+            <ConsultationButton variant="ghost">
               <Phone className="size-4" /> Request Callback
-            </Button>
+            </ConsultationButton>
           </div>
         </Container>
       </div>

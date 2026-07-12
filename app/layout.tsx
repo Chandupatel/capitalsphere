@@ -3,6 +3,8 @@ import localFont from "next/font/local";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFab } from "@/components/ui/WhatsAppFab";
+import { ConsultationModalProvider } from "@/components/consultation/ConsultationModalProvider";
+import { ConsultationModal } from "@/components/consultation/ConsultationModal";
 import "./globals.css";
 
 // Self-hosted variable fonts (OFL-licensed Inter & Playfair Display).
@@ -50,10 +52,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans">
-        <Header />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        <WhatsAppFab />
+        <ConsultationModalProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <WhatsAppFab />
+          <ConsultationModal />
+        </ConsultationModalProvider>
       </body>
     </html>
   );

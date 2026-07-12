@@ -1,9 +1,16 @@
 import type { ReactNode } from "react";
 
+export interface NavChild {
+  label: string;
+  href: string;
+  description?: string;
+  groupStart?: string;
+}
+
 export interface NavLink {
   label: string;
   href: string;
-  children?: { label: string; href: string; description?: string }[];
+  children?: NavChild[];
 }
 
 export interface StatItem {

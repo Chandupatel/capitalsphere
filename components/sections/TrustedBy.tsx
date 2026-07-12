@@ -8,7 +8,7 @@ export function TrustedBy() {
     <section className="border-y border-border bg-surface py-10">
       <Container>
         <p className="mb-6 text-center text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
-          Trusted by 10,000+ businesses across India
+          Trusted by 500+ businesses across India
         </p>
       </Container>
       <div className="overflow-hidden">

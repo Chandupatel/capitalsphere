@@ -40,22 +40,16 @@ import type {
 
 export const NAV_LINKS: NavLink[] = [
   { label: "Home", href: "#home" },
-  { label: "About Us", href: "#about" },
   {
     label: "Services",
     href: "#services",
     children: [
-      { label: "Business Registration", href: "#services" },
+      { label: "Business Registration", href: "#services", groupStart: "Services" },
       { label: "Tax & Compliance", href: "#services" },
       { label: "Startup Services", href: "#services" },
       { label: "Intellectual Property", href: "#services" },
-    ],
-  },
-  {
-    label: "Government Funding",
-    href: "#funding",
-    children: [
-      { label: "Startup India Recognition", href: "#funding" },
+      { label: "Business Consulting", href: "#services" },
+      { label: "Startup India Recognition", href: "#funding", groupStart: "Government Funding" },
       { label: "MSME Loans", href: "#funding" },
       { label: "CGTMSE", href: "#funding" },
       { label: "PMEGP", href: "#funding" },
@@ -63,14 +57,16 @@ export const NAV_LINKS: NavLink[] = [
     ],
   },
   { label: "Resources", href: "#resources" },
+  { label: "About Us", href: "#about" },
   { label: "Contact Us", href: "#contact" },
 ];
 
+// TODO: Replace with client-confirmed figures once shared — currently placeholders.
 export const STATS: StatItem[] = [
-  { id: "clients", value: "10,000+", label: "Happy Clients", icon: <Users2 className="size-5" /> },
-  { id: "funding", value: "₹500+ Cr", label: "Funding Assisted", icon: <IndianRupee className="size-5" /> },
-  { id: "success", value: "99%", label: "Success Rate", icon: <ShieldCheck className="size-5" /> },
-  { id: "experience", value: "5+ Years", label: "Experience", icon: <BadgeCheck className="size-5" /> },
+  { id: "clients", value: "500+", label: "Happy Clients", icon: <Users2 className="size-5" /> },
+  { id: "funding", value: "₹50+ Cr", label: "Funding Assisted", icon: <IndianRupee className="size-5" /> },
+  { id: "success", value: "95%", label: "Success Rate", icon: <ShieldCheck className="size-5" /> },
+  { id: "experience", value: "3+ Years", label: "Experience", icon: <BadgeCheck className="size-5" /> },
   { id: "reach", value: "PAN India", label: "Services", icon: <Globe2 className="size-5" /> },
 ];
 
