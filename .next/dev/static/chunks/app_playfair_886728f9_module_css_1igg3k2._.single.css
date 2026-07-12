@@ -1,0 +1,26 @@
+/* [project]/app/playfair_886728f9.module.css [app-client] (css) */
+@font-face {
+  font-family: playfair;
+  src: url("../media/playfair_display_latin_wght_normal-s.p.1izqcz-wkfvza.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400 900;
+}
+
+@font-face {
+  font-family: playfair Fallback;
+  src: local(Arial);
+  ascent-override: 106.51%;
+  descent-override: 24.71%;
+  line-gap-override: 0.0%;
+  size-adjust: 101.58%;
+}
+
+.playfair_886728f9-module__sji7yG__className {
+  font-family: playfair, playfair Fallback;
+}
+
+.playfair_886728f9-module__sji7yG__variable {
+  --font-playfair: "playfair", "playfair Fallback";
+}
+
+/*# sourceMappingURL=app_playfair_886728f9_module_css_1igg3k2._.single.css.map*/
