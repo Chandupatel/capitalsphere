@@ -40,31 +40,31 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="relative mx-auto flex w-full max-w-md items-center justify-center py-6 lg:max-w-none">
+        <div className="relative mx-auto flex w-full max-w-md items-center justify-center lg:max-w-none">
           {/* radial glow */}
-          <div
+          {/* <div
             className="absolute inset-0 rounded-full"
             style={{
               background:
                 "radial-gradient(circle at 50% 42%, rgba(198,167,106,0.18), transparent 62%)",
             }}
             aria-hidden
-          />
+          /> */}
 
           {/* podium base beneath the wordmark */}
-          <div className="absolute bottom-[6%] h-8 w-[58%] rounded-full bg-navy-900/90 blur-[1px]" />
-          <div className="absolute bottom-[11%] h-2.5 w-[48%] rounded-full bg-gold-500" />
+          {/* <div className="absolute bottom-[6%] h-8 w-[58%] rounded-full bg-navy-900/90 blur-[1px]" />
+          <div className="absolute bottom-[11%] h-2.5 w-[48%] rounded-full bg-gold-500" /> */}
 
-          <TrendingUp
+          {/* <TrendingUp
             className="absolute right-[6%] top-[4%] size-10 text-gold-500 drop-shadow-sm sm:size-12"
             strokeWidth={1.75}
             aria-hidden
-          />
+          /> */}
 
           {/* full logo — icon + wordmark, always shown in full, never cropped */}
-          <div className="relative z-10 w-[82%] sm:w-[70%] lg:w-[78%]">
+          <div className="relative z-10 hidden md:block md:w-[70%] lg:w-[78%]">
             <Image
-              src="/images/logo-full.png"
+              src="/images/new-logo.png"
               alt="CapitalSphere — Funding Today, Building Tomorrow"
               width={1059}
               height={760}
@@ -74,7 +74,7 @@ export function Hero() {
           </div>
 
           {/* floating stat chip */}
-          <div className="absolute left-0 top-2 flex items-center gap-2 rounded-2xl border border-border bg-white px-4 py-3 shadow-[var(--shadow-card)] sm:left-2">
+          <div className="absolute left-0 top-2 hidden items-center gap-2 rounded-2xl border border-border bg-white px-4 py-3 shadow-[var(--shadow-card)] lg:flex lg:left-2">
             <ArrowUpRight className="size-4 text-gold-600" />
             <div className="leading-tight">
               <p className="text-sm font-bold text-navy-950">₹50+ Cr</p>
