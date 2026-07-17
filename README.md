@@ -66,11 +66,12 @@ which opens a shared modal (`ConsultationModalProvider` + `ConsultationModal`, m
 in `app/layout.tsx`). The form collects Full Name, Company Name, Email, Phone and Message,
 then POSTs to `app/api/consultation/route.ts`.
 
-That route **only** sends a plain email to `ADMIN_EMAIL` via SMTP (nodemailer) — no database,
-no CRM, no auto-reply to the client. Configure it with environment variables (see `.env.example`):
+That route sends two branded HTML emails via SMTP (nodemailer) — an enquiry notification to
+`ADMIN_EMAIL`, and a thank-you confirmation to the visitor. No database or CRM. Configure it
+with environment variables (see `.env.example`):
 
 ```bash
-ADMIN_EMAIL=info@capitalsphere.in
+ADMIN_EMAIL=info@capitalsphere.us.cc
 SMTP_HOST=smtp.example.com
 SMTP_PORT=587
 SMTP_USER=your-smtp-username
@@ -88,8 +89,31 @@ any client component.
 
 ## Contact details
 
-Phone, WhatsApp, and the displayed admin email live in **one file**: `constants/contact.tsx`.
-Update the number there once and it propagates to the header, footer, and every CTA section.
+Phone numbers, WhatsApp, and the displayed admin email live in **one file**: `constants/contact.tsx`.
+Update them there once and they propagate to the header, footer, WhatsApp button, emails, and every CTA section.
+
+## First-visit "Services Are Under Maintenance" notice
+
+`components/maintenance/MaintenanceModal.tsx`, mounted at the top of `app/page.tsx` (homepage
+only). Behavior:
+
+- Shown once per browser — gated on a `localStorage` flag (`csbs_maintenance_notice_seen`),
+  not a cookie, so it reappears if the visitor clears site data or uses a different browser/device.
+- **Not** dismissible by clicking the backdrop or pressing Escape — there is intentionally no
+  handler wired to either. The only interactive elements are the "OK" button and the "View
+  Website" link; both mark the notice as seen and reveal the page. They're deliberately
+  identical in effect — the design just calls for two labeled affordances.
+- The page behind it is inert until dismissed: the backdrop is a full-viewport fixed layer
+  above everything else (`z-[200]`) and body scroll is locked while it's open.
+- The contact email shown inside it is `MAINTENANCE_CONTACT_EMAIL` in `constants/contact.tsx`.
+
+One caveat worth knowing: because "has this visitor been here before" can only be answered
+client-side (`localStorage` isn't available during server rendering), there's an unavoidable
+few-millisecond gap between first paint and the JS running. The component renders a full-screen
+blocking overlay (no card yet) for that gap rather than showing the page underneath, so nothing
+is clickable in the meantime — but if you need a guarantee that holds even with JavaScript
+disabled or before hydration, that requires a cookie read on the server instead, which isn't
+what's implemented here.
 
 ## Design tokens
 

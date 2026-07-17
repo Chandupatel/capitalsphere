@@ -1,14 +1,17 @@
 import { NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import path from "path";
+import { ADMIN_EMAIL_DISPLAY } from "@/constants/contact";
+import {
+  buildAdminEnquiryEmail,
+  buildThankYouEmail,
+  LOGO_CID,
+  type ConsultationEmailData,
+} from "@/lib/email-templates";
 
 export const runtime = "nodejs";
 
-interface ConsultationPayload {
-  fullName: string;
-  companyName: string;
-  email: string;
-  phone: string;
-  message: string;
+interface ConsultationPayload extends ConsultationEmailData {
   // honeypot field — real users never fill this in
   website?: string;
 }
@@ -17,6 +20,15 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function sanitize(value: unknown, max = 2000): string {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
+}
+
+function logoAttachment() {
+  return {
+    filename: "logo-mark.png",
+    path: path.join(process.cwd(), "public", "images", "logo-mark.png"),
+    cid: LOGO_CID,
+    contentDisposition: "inline" as const,
+  };
 }
 
 export async function POST(request: Request) {
@@ -65,6 +77,11 @@ export async function POST(request: Request) {
     );
   }
 
+  const data: ConsultationEmailData = { fullName, companyName, email, phone, message };
+  const adminMail = buildAdminEnquiryEmail(data);
+  const thankYouMail = buildThankYouEmail(data);
+  const logo = logoAttachment();
+
   try {
     const transporter = nodemailer.createTransport({
       host: smtpHost,
@@ -77,29 +94,20 @@ export async function POST(request: Request) {
       from: `"CapitalSphere Website" <${smtpUser}>`,
       to: adminEmail,
       replyTo: email,
-      subject: `New consultation request — ${fullName}${companyName ? ` (${companyName})` : ""}`,
-      text: [
-        `Full Name: ${fullName}`,
-        `Company Name: ${companyName || "—"}`,
-        `Email: ${email}`,
-        `Phone: ${phone}`,
-        "",
-        "Message:",
-        message,
-      ].join("\n"),
-      html: `
-        <div style="font-family:Arial,Helvetica,sans-serif;font-size:14px;color:#0f1b2d;line-height:1.6">
-          <h2 style="margin:0 0 16px;color:#0b2a4a">New Consultation Request</h2>
-          <table cellpadding="6" cellspacing="0" style="border-collapse:collapse">
-            <tr><td style="font-weight:bold;">Full Name</td><td>${escapeHtml(fullName)}</td></tr>
-            <tr><td style="font-weight:bold;">Company Name</td><td>${escapeHtml(companyName) || "—"}</td></tr>
-            <tr><td style="font-weight:bold;">Email</td><td>${escapeHtml(email)}</td></tr>
-            <tr><td style="font-weight:bold;">Phone</td><td>${escapeHtml(phone)}</td></tr>
-          </table>
-          <p style="font-weight:bold;margin-top:16px;">Message</p>
-          <p style="white-space:pre-wrap;">${escapeHtml(message)}</p>
-        </div>
-      `,
+      subject: adminMail.subject,
+      text: adminMail.text,
+      html: adminMail.html,
+      attachments: [logo],
+    });
+
+    await transporter.sendMail({
+      from: `"CapitalSphere" <${smtpUser}>`,
+      to: email,
+      replyTo: ADMIN_EMAIL_DISPLAY,
+      subject: thankYouMail.subject,
+      text: thankYouMail.text,
+      html: thankYouMail.html,
+      attachments: [logo],
     });
 
     return NextResponse.json({ ok: true });
@@ -110,13 +118,4 @@ export async function POST(request: Request) {
       { status: 500 },
     );
   }
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 }

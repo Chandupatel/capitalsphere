@@ -8,10 +8,12 @@ import { TrustedBy } from "@/components/sections/TrustedBy";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { LatestInsights } from "@/components/sections/LatestInsights";
 import { CtaBanner } from "@/components/sections/CtaBanner";
+import { MaintenanceModal } from "@/components/maintenance/MaintenanceModal";
 
 export default function Home() {
   return (
     <>
+      <MaintenanceModal />
       <Hero />
       <StatsStrip />
       <CoreServices />

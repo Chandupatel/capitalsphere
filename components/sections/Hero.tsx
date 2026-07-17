@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { ArrowUpRight, TrendingUp } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { ConsultationButton } from "@/components/consultation/ConsultationButton";
 
 export function Hero() {
   return (
@@ -31,9 +32,9 @@ export function Hero() {
             grow and scale their businesses with confidence.
           </p>
           <div className="mt-8 flex flex-col gap-3.5 sm:flex-row">
-            <Button href="#contact" variant="primary" withArrow>
+            <ConsultationButton variant="primary" withArrow>
               Get Started
-            </Button>
+            </ConsultationButton>
             <Button href="#services" variant="outline-light">
               Explore Services
             </Button>
@@ -41,26 +42,6 @@ export function Hero() {
         </div>
 
         <div className="relative mx-auto flex w-full max-w-md items-center justify-center lg:max-w-none">
-          {/* radial glow */}
-          {/* <div
-            className="absolute inset-0 rounded-full"
-            style={{
-              background:
-                "radial-gradient(circle at 50% 42%, rgba(198,167,106,0.18), transparent 62%)",
-            }}
-            aria-hidden
-          /> */}
-
-          {/* podium base beneath the wordmark */}
-          {/* <div className="absolute bottom-[6%] h-8 w-[58%] rounded-full bg-navy-900/90 blur-[1px]" />
-          <div className="absolute bottom-[11%] h-2.5 w-[48%] rounded-full bg-gold-500" /> */}
-
-          {/* <TrendingUp
-            className="absolute right-[6%] top-[4%] size-10 text-gold-500 drop-shadow-sm sm:size-12"
-            strokeWidth={1.75}
-            aria-hidden
-          /> */}
-
           {/* full logo — icon + wordmark, always shown in full, never cropped */}
           <div className="relative z-10 hidden md:block md:w-[70%] lg:w-[78%]">
             <Image

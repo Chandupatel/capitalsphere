@@ -7,7 +7,7 @@ import { ChevronDown, Menu, Phone, X } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { ConsultationButton } from "@/components/consultation/ConsultationButton";
 import { NAV_LINKS } from "@/constants/data";
-import { PHONE_DISPLAY, PHONE_TEL } from "@/constants/contact";
+import { PHONES } from "@/constants/contact";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -97,13 +97,18 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 xl:flex">
-          <a
-            href={PHONE_TEL}
-            className="flex items-center gap-2 whitespace-nowrap rounded-full border border-border px-4 py-2 text-sm font-semibold text-navy-900 transition-colors hover:border-gold-400"
-          >
-            <Phone className="size-4 shrink-0 text-gold-600" aria-hidden />
-            {PHONE_DISPLAY}
-          </a>
+          <div className="flex flex-col items-end gap-0.5">
+            {PHONES.map((phone) => (
+              <a
+                key={phone.tel}
+                href={phone.tel}
+                className="flex items-center gap-1.5 whitespace-nowrap text-sm font-semibold text-navy-900 transition-colors hover:text-gold-600"
+              >
+                <Phone className="size-3.5 shrink-0 text-gold-600" aria-hidden />
+                {phone.display}
+              </a>
+            ))}
+          </div>
           <ConsultationButton variant="primary" size="sm" className="whitespace-nowrap">
             Get Free Consultation
           </ConsultationButton>
@@ -171,12 +176,15 @@ export function Header() {
               </div>
             ))}
             <div className="mt-3 flex flex-col gap-3">
-              <a
-                href={PHONE_TEL}
-                className="flex items-center justify-center gap-2 rounded-full border border-border px-4 py-2.5 text-sm font-semibold text-navy-900"
-              >
-                <Phone className="size-4 text-gold-600" /> {PHONE_DISPLAY}
-              </a>
+              {PHONES.map((phone) => (
+                <a
+                  key={phone.tel}
+                  href={phone.tel}
+                  className="flex items-center justify-center gap-2 rounded-full border border-border px-4 py-2.5 text-sm font-semibold text-navy-900"
+                >
+                  <Phone className="size-4 text-gold-600" /> {phone.display}
+                </a>
+              ))}
               <ConsultationButton
                 variant="primary"
                 className="w-full"

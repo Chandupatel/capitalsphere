@@ -9,7 +9,7 @@
 
 # Production
 /build
-
+.next/
 # Logs
 npm-debug.log*
 yarn-debug.log*

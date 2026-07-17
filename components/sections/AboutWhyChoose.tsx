@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionKicker } from "@/components/ui/SectionKicker";
-import { Button } from "@/components/ui/Button";
+import { ConsultationButton } from "@/components/consultation/ConsultationButton";
 import { WHY_CHOOSE_US } from "@/constants/data";
 
 export function AboutWhyChoose() {
@@ -18,9 +18,9 @@ export function AboutWhyChoose() {
             entrepreneurs and enterprises with legal, financial and compliance
             solutions under one roof.
           </p>
-          <Button href="#about" variant="primary" withArrow className="mt-7">
+          <ConsultationButton variant="primary" withArrow className="mt-7">
             Know More About Us
-          </Button>
+          </ConsultationButton>
 
           <div className="relative mt-10 overflow-hidden rounded-2xl bg-navy-950 shadow-[var(--shadow-lift)]">
             <div

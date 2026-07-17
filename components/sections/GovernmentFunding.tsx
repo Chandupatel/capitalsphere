@@ -1,6 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { SectionKicker } from "@/components/ui/SectionKicker";
-import { Button } from "@/components/ui/Button";
+import { ConsultationButton } from "@/components/consultation/ConsultationButton";
 import { FUNDING_PROGRAMS } from "@/constants/data";
 
 export function GovernmentFunding() {
@@ -17,9 +17,9 @@ export function GovernmentFunding() {
               We help you identify, apply and secure the right funding &amp; grants to
               accelerate your business growth.
             </p>
-            <Button href="#contact" variant="secondary" withArrow className="mt-6">
+            <ConsultationButton variant="secondary" withArrow className="mt-6">
               Check Funding Eligibility
-            </Button>
+            </ConsultationButton>
           </div>
 
           <div className="-mx-1 flex snap-x gap-4 overflow-x-auto px-1 pb-2 sm:grid sm:grid-cols-2 sm:overflow-visible lg:grid-cols-5">

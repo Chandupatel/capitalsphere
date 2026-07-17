@@ -118,7 +118,8 @@ function ConsultationDialog() {
               <CheckCircle2 className="size-12 text-emerald-500" />
               <h3 className="font-display text-lg font-semibold text-navy-950">Request sent!</h3>
               <p className="max-w-xs text-sm text-slate-500">
-                Thank you for reaching out. Our team will contact you shortly.
+                Thank you for reaching out. A confirmation email is on its way, and our
+                team will contact you shortly.
               </p>
               <button
                 type="button"
@@ -191,7 +192,7 @@ function ConsultationDialog() {
                     name="phone"
                     type="tel"
                     required
-                    placeholder="+91 95714 97184"
+                    placeholder="+91 96941 34403"
                     className={inputClasses}
                   />
                 </div>
