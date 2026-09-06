@@ -16,7 +16,7 @@ export function ConsultationModal() {
 }
 
 function ConsultationDialog() {
-  const { close } = useConsultationModal();
+  const { close, context } = useConsultationModal();
   const [status, setStatus] = useState<Status>("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const dialogRef = useRef<HTMLDivElement>(null);
@@ -52,6 +52,7 @@ function ConsultationDialog() {
       email: String(data.get("email") || ""),
       phone: String(data.get("phone") || ""),
       message: String(data.get("message") || ""),
+      service: context ?? "", // which service card (if any) opened this modal
       website: String(data.get("website") || ""), // honeypot
     };
 
@@ -96,10 +97,12 @@ function ConsultationDialog() {
         <div className="flex items-start justify-between border-b border-border px-6 py-5">
           <div>
             <h2 id="consultation-modal-title" className="font-display text-xl font-bold text-navy-950">
-              Book a Free Consultation
+              {context ? `Enquire About ${context}` : "Book a Free Consultation"}
             </h2>
             <p className="mt-1 text-sm text-slate-500">
-              Share a few details and our team will get back to you shortly.
+              {context
+                ? `Share a few details and our team will get back to you about ${context.toLowerCase()}.`
+                : "Share a few details and our team will get back to you shortly."}
             </p>
           </div>
           <button

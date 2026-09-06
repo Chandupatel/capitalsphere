@@ -71,7 +71,7 @@ That route sends two branded HTML emails via SMTP (nodemailer) — an enquiry no
 with environment variables (see `.env.example`):
 
 ```bash
-ADMIN_EMAIL=info@capitalsphere.us.cc
+ADMIN_EMAIL=info@capitalspherebusinesssolutions.in
 SMTP_HOST=smtp.example.com
 SMTP_PORT=587
 SMTP_USER=your-smtp-username
@@ -130,13 +130,15 @@ All are exposed as Tailwind utilities (`bg-navy-900`, `text-gold-600`, etc.) via
 ## Notes on visual assets
 
 The Figma reference uses photographic stock imagery (skyline, office interior) and
-third-party brand logos (OYO, Zomato, Paytm, etc.) in the "Trusted By" strip and
-blog thumbnails. To keep this codebase free of licensing risk out of the box:
+third-party brand logos (OYO, Zomato, Paytm, etc.) in blog thumbnails. To keep this
+codebase free of licensing risk out of the box:
 
 - The hero shows the actual transparent full logo (`public/images/logo-full.png`,
   icon + wordmark) at full size with a light CSS glow/podium behind it — not a stock photo.
-- The trust-logo strip renders brand **names as text**, not reproduced logos.
 - Blog card art uses brand-colored icon tiles instead of stock photography.
+
+> The "Trusted By" marquee strip (brand names as text) that previously sat between
+> Process Steps and Testimonials has been removed from the homepage per client request.
 
 Swap in licensed photography by dropping files into `public/images/` and updating
 the relevant section component — the layout, spacing, and responsive behavior

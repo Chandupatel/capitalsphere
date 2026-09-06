@@ -3,15 +3,9 @@ import { Mail, MapPin, Phone } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { NewsletterForm } from "@/components/layout/NewsletterForm";
 import { FOOTER_LINKS } from "@/constants/data";
-import { ADMIN_EMAIL_DISPLAY, PHONES } from "@/constants/contact";
+import { ADMIN_EMAIL_DISPLAY, INSTAGRAM_URL, PHONES } from "@/constants/contact";
 
-const SOCIALS = [
-  { initials: "f", label: "Facebook" },
-  { initials: "ig", label: "Instagram" },
-  { initials: "in", label: "LinkedIn" },
-  { initials: "x", label: "Twitter / X" },
-  { initials: "yt", label: "YouTube" },
-];
+const SOCIALS = [{ initials: "ig", label: "Instagram", href: INSTAGRAM_URL }];
 
 export function Footer() {
   return (
@@ -34,10 +28,12 @@ export function Footer() {
             Your trusted partner for Legal, Financial and Business Growth solutions.
           </p>
           <div className="flex gap-2 pt-2">
-            {SOCIALS.map(({ initials, label }) => (
+            {SOCIALS.map(({ initials, label, href }) => (
               <a
                 key={label}
-                href="#"
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label={label}
                 className="flex size-9 items-center justify-center rounded-full border border-white/15 text-[11px] font-bold uppercase text-navy-100/80 transition-colors hover:border-gold-500 hover:text-gold-500"
               >

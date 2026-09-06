@@ -49,6 +49,7 @@ export async function POST(request: Request) {
   const email = sanitize(body.email, 160);
   const phone = sanitize(body.phone, 40);
   const message = sanitize(body.message, 3000);
+  const service = sanitize(body.service, 160);
 
   if (!fullName || !email || !phone || !message) {
     return NextResponse.json(
@@ -77,7 +78,14 @@ export async function POST(request: Request) {
     );
   }
 
-  const data: ConsultationEmailData = { fullName, companyName, email, phone, message };
+  const data: ConsultationEmailData = {
+    fullName,
+    companyName,
+    email,
+    phone,
+    message,
+    service: service || undefined,
+  };
   const adminMail = buildAdminEnquiryEmail(data);
   const thankYouMail = buildThankYouEmail(data);
   const logo = logoAttachment();

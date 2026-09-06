@@ -1,16 +1,20 @@
 import type { ReactNode } from "react";
 
-export interface NavChild {
+export interface NavMegaMenuItem {
   label: string;
   href: string;
-  description?: string;
-  groupStart?: string;
+}
+
+export interface NavMegaMenuCategory {
+  title: string;
+  items: NavMegaMenuItem[];
 }
 
 export interface NavLink {
   label: string;
   href: string;
-  children?: NavChild[];
+  /** Category-wise columns for a horizontal mega menu (e.g. "Services"). */
+  megaMenu?: NavMegaMenuCategory[];
 }
 
 export interface StatItem {

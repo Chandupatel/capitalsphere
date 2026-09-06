@@ -43,17 +43,52 @@ export const NAV_LINKS: NavLink[] = [
   {
     label: "Services",
     href: "#services",
-    children: [
-      { label: "Business Registration", href: "#services", groupStart: "Services" },
-      { label: "Tax & Compliance", href: "#services" },
-      { label: "Startup Services", href: "#services" },
-      { label: "Intellectual Property", href: "#services" },
-      { label: "Business Consulting", href: "#services" },
-      { label: "Startup India Recognition", href: "#funding", groupStart: "Government Funding" },
-      { label: "MSME Loans", href: "#funding" },
-      { label: "CGTMSE", href: "#funding" },
-      { label: "PMEGP", href: "#funding" },
-      { label: "Mudra Loan", href: "#funding" },
+    megaMenu: [
+      {
+        title: "Registration",
+        items: [
+          { label: "Business Registration", href: "#services" },
+          { label: "Startup India Registration", href: "#services" },
+          { label: "ISO Certification", href: "#services" },
+          { label: "GST Registration", href: "#services" },
+        ],
+      },
+      {
+        title: "Government Funding & Loans",
+        items: [
+          { label: "NIDHI SSS", href: "#funding" },
+          { label: "TIDE 2.0", href: "#funding" },
+          { label: "MSME Grants", href: "#funding" },
+          { label: "State Grants (iStart RJ, Bihar Grant)", href: "#funding" },
+          { label: "MSME Loans", href: "#funding" },
+          { label: "Mudra Loan", href: "#funding" },
+        ],
+      },
+      {
+        title: "Tax & Compliance",
+        items: [
+          { label: "GST", href: "#services" },
+          { label: "ROC Compliance", href: "#services" },
+          { label: "Accounting", href: "#services" },
+          { label: "Income Tax & Audit", href: "#services" },
+        ],
+      },
+      {
+        title: "Business Consulting",
+        items: [
+          { label: "Legal Advisory", href: "#services" },
+          { label: "Financial Planning", href: "#services" },
+          { label: "Compliance & Strategy", href: "#services" },
+        ],
+      },
+      {
+        title: "Intellectual Property",
+        items: [
+          { label: "Trademark", href: "#services" },
+          { label: "Copyright", href: "#services" },
+          { label: "Patent & IP Protection Services", href: "#services" },
+        ],
+      },
     ],
   },
   { label: "Resources", href: "#resources" },
@@ -141,29 +176,28 @@ export const PROCESS_STEPS: ProcessStep[] = [
   { id: "06", step: "06", title: "Certificate Delivery", description: "Receive your certificate on your email", icon: <MailCheck className="size-6" /> },
 ];
 
-export const TRUSTED_BY = ["OYO", "Zomato", "Paytm", "BYJU'S", "CRED", "Mamaearth", "Nykaa", "PolicyBazaar"];
-
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: "rohit",
+    id: "ravikant",
     quote:
-      "CapitalSphere made our company registration process so smooth and hassle-free. Highly professional team!",
-    name: "Rohit Sharma",
-    role: "Founder, TechNova Pvt. Ltd.",
+      "I recently took Startup India Registration and GST Registration services from CapitalSphere Business Solutions for my company GFSMARTSOLUTIONS PRIVATE LIMITED, and I had a very good experience with their team.",
+    name: "Ravikant Yadav",
+    role: "CEO",
     rating: 5,
   },
   {
-    id: "neha",
+    id: "jitesh",
+    quote:
+      "I recently took Startup India Registration for my company Unity Tech Consulting from CapitalSphere Business Solutions, and I had a very good experience with their team. The entire process was handled professionally and in a timely manner. The team explained the documentation and registration process clearly and kept me updated throughout the process. Both my Startup India Registration were completed smoothly without unnecessary delays.",
+    name: "Jitesh Sharma",
+    role: "CS (Unity Tech Consulting)",
+    rating: 5,
+  },
+  {
+    id: "aman",
     quote: "They helped us secure government funding for our startup. Excellent support throughout the process.",
-    name: "Neha Verma",
-    role: "CEO, BrightMind Innovations",
-    rating: 5,
-  },
-  {
-    id: "amit",
-    quote: "From GST to compliance, everything is handled perfectly. Truly a one-stop solution.",
-    name: "Amit Mehta",
-    role: "Director, Mehta Exports",
+    name: "Aman Rana",
+    role: "Director",
     rating: 5,
   },
 ];

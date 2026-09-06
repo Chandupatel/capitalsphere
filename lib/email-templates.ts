@@ -26,6 +26,8 @@ export interface ConsultationEmailData {
   email: string;
   phone: string;
   message: string;
+  /** Which service (e.g. from a service card's "Learn More") the enquiry relates to, if any. */
+  service?: string;
 }
 
 function escapeHtml(value: string) {
@@ -160,9 +162,11 @@ export function buildAdminEnquiryEmail(data: ConsultationEmailData) {
   const safeEmail = escapeHtml(data.email);
   const safePhone = escapeHtml(data.phone);
   const safeMessage = escapeHtml(data.message).replace(/\n/g, "<br />");
+  const safeService = data.service ? escapeHtml(data.service) : "";
 
   const bodyHtml = `
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid ${COLORS.border};border-radius:12px;overflow:hidden;background-color:${COLORS.surface};">
+      ${safeService ? detailRow("Service Interested In", safeService) : ""}
       ${detailRow("Full Name", safeName)}
       ${detailRow("Company", safeCompany)}
       ${detailRow(
@@ -188,9 +192,13 @@ export function buildAdminEnquiryEmail(data: ConsultationEmailData) {
   `;
 
   const html = emailShell({
-    preheader: `New consultation enquiry from ${data.fullName}`,
+    preheader: data.service
+      ? `New ${data.service} enquiry from ${data.fullName}`
+      : `New consultation enquiry from ${data.fullName}`,
     title: "New Enquiry Notification",
-    subtitle: "A visitor submitted the <strong>Book a Free Consultation</strong> form on the CapitalSphere website.",
+    subtitle: data.service
+      ? `A visitor submitted the <strong>Book a Free Consultation</strong> form regarding <strong>${safeService}</strong> on the CapitalSphere website.`
+      : "A visitor submitted the <strong>Book a Free Consultation</strong> form on the CapitalSphere website.",
     bodyHtml,
     footerNote: "This notification was sent automatically from the CapitalSphere website consultation form.",
   });
@@ -198,6 +206,7 @@ export function buildAdminEnquiryEmail(data: ConsultationEmailData) {
   const text = [
     "New Enquiry Notification — CapitalSphere",
     "",
+    ...(data.service ? [`Service Interested In: ${data.service}`] : []),
     `Full Name: ${data.fullName}`,
     `Company: ${data.companyName || "—"}`,
     `Email: ${data.email}`,
@@ -208,7 +217,9 @@ export function buildAdminEnquiryEmail(data: ConsultationEmailData) {
   ].join("\n");
 
   return {
-    subject: `New consultation enquiry — ${data.fullName}${data.companyName ? ` (${data.companyName})` : ""}`,
+    subject: data.service
+      ? `New ${data.service} enquiry — ${data.fullName}${data.companyName ? ` (${data.companyName})` : ""}`
+      : `New consultation enquiry — ${data.fullName}${data.companyName ? ` (${data.companyName})` : ""}`,
     html,
     text,
   };
@@ -255,7 +266,7 @@ export function buildThankYouEmail(data: ConsultationEmailData) {
     title: "Thank You for Contacting Us",
     subtitle: "Your free consultation request has been received successfully.",
     bodyHtml,
-    footerNote: "You are receiving this email because you submitted a consultation request on capitalsphere.us.cc.",
+    footerNote: "You are receiving this email because you submitted a consultation request on capitalspherebusinesssolutions.in.",
   });
 
   const text = [

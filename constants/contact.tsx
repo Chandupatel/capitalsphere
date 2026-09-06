@@ -8,7 +8,10 @@ export const PHONE_DISPLAY = PHONES[0].display;
 export const PHONE_TEL = PHONES[0].tel;
 export const WHATSAPP_URL = "https://wa.me/919694134403";
 
-export const ADMIN_EMAIL_DISPLAY = "info@capitalsphere.us.cc";
+export const INSTAGRAM_URL =
+  "https://www.instagram.com/capitalspherebusinesssolutions?stkn=MWdsMjhleTdndmV1Mg%3D%3D&utm_source=qr";
+
+export const ADMIN_EMAIL_DISPLAY = "info@capitalspherebusinesssolutions.in";
 
 // Shown in the first-visit "services under maintenance" notice modal.
-export const MAINTENANCE_CONTACT_EMAIL = "info@capitalsphere.us.cc";
+export const MAINTENANCE_CONTACT_EMAIL = "info@capitalspherebusinesssolutions.in";
